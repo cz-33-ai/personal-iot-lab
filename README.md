@@ -1,5 +1,20 @@
 # Physical World Interface (PWI)
 
+> [!IMPORTANT]
+> ### 🎯 WHERE TO START: **[PWI MISSION CONTROL — Open your To-Do Dashboard](START_HERE.md)**
+> **Current stage:** M1 · Unified Device Hub  
+> **One task to do NOW:** **[#6 — Install Home Assistant & open the dashboard](https://github.com/cz-33-ai/physical-world-interface/issues/6)**  
+> [View all open issues](https://github.com/cz-33-ai/physical-world-interface/issues?q=is%3Aissue+is%3Aopen) · [View tasks assigned to me](https://github.com/cz-33-ai/physical-world-interface/issues?q=is%3Aissue+is%3Aopen+assignee%3A%40me)
+
+| ✅ DONE | 🔵 NOW | ⏭️ NEXT | 🔭 LATER |
+|:---:|:---:|:---:|:---:|
+| MQTT + Zigbee + ESP32 basic connectivity | [Install Home Assistant · #6](https://github.com/cz-33-ai/physical-world-interface/issues/6) | [Connect Zigbee2MQTT · #7](https://github.com/cz-33-ai/physical-world-interface/issues/7) | [Agent “Prepare for Sleep” · #4](https://github.com/cz-33-ai/physical-world-interface/issues/4) |
+
+**Can't remember what to do? Bookmark [START_HERE.md](START_HERE.md).** It is the curated home for the current task, next steps and full project milestones.
+
+---
+
+
 **Perceive, understand, and act in the physical world — a unified physical capability layer for Personal Agents.**
 
 PWI is a subsystem of the larger **Personal Agent Platform**. Its mission is not merely to control smart-home devices: it aims to help an Agent **observe the physical environment, understand device state and capabilities, execute authorized multi-device actions, and receive verifiable feedback**.
