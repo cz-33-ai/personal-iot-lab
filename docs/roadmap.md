@@ -71,3 +71,14 @@ Turn **verified** experiments into lessons with concept, architecture, equipment
 ## Working rule
 
 For each task, keep: **Goal → Design → Implementation → Evidence → Acceptance → Learning → Public Release Review**.
+
+
+## Current tracked implementation issues
+
+| Work item | GitHub Issue |
+|---|---|
+| M1: Home Assistant + Mosquitto + Zigbee2MQTT | [#1](https://github.com/cz-33-ai/personal-iot-lab/issues/1) |
+| M1 research: ESPHome Native API vs MQTT | [#2](https://github.com/cz-33-ai/personal-iot-lab/issues/2) |
+| M2: First controllable actuator and feedback | [#3](https://github.com/cz-33-ai/personal-iot-lab/issues/3) |
+| M3: Prepare for Sleep | [#4](https://github.com/cz-33-ai/personal-iot-lab/issues/4) |
+| M4: Observation and action-outcome contracts | [#5](https://github.com/cz-33-ai/personal-iot-lab/issues/5) |
