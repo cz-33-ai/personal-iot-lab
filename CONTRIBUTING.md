@@ -2,7 +2,7 @@
 
 Thanks for your interest in PWI. We are building a **public, reproducible interface between Personal Agents and physical-world capabilities**, starting with local IoT.
 
-> **License decision pending:** The project is publicly readable, but a formal open-source license has not yet been selected ([#12](https://github.com/cz-33-ai/physical-world-interface/issues/12)). You can review the public material and report issues. Before broader redistribution or major code contributions, check the eventual license and contribution terms.
+> **License:** PWI is licensed under the [Apache License 2.0](LICENSE). By contributing, you agree to make your contributions available under that license and confirm you have the rights needed to submit them. Preserve license, copyright and any applicable NOTICE files when redistributing; identify modified files when required. Do not copy third-party code or assets unless their licenses permit it.
 
 ## A good first contribution
 
