@@ -91,7 +91,7 @@ These are **not** replacements for the active engineering task. They are release
 | Goal | Issue | Status |
 |---|---|---|
 | Get honest feedback from one independent simulator user | [#9 · External reproduction](https://github.com/cz-33-ai/physical-world-interface/issues/9) | Open |
-| Decide an explicit open-source license | [#12 · License selection](https://github.com/cz-33-ai/physical-world-interface/issues/12) | Open — owner decision |
+| Adopt Apache-2.0 open-source license | [LICENSE](LICENSE) · [#12](https://github.com/cz-33-ai/physical-world-interface/issues/12) | ✅ Completed |
 | Convert the first module into a teachable lesson | [#11 · Course validation](https://github.com/cz-33-ai/physical-world-interface/issues/11) | Open |
 | Record actual hardware footage **after a real device works** | [#10 · Physical demo video](https://github.com/cz-33-ai/physical-world-interface/issues/10) | Later |
 
