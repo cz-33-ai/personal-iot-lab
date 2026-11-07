@@ -30,7 +30,7 @@ flowchart LR
 - [x] Public README with clear positioning and limitations.
 - [x] Start Here dashboard and open tasks.
 - [x] Offline, zero-hardware simulator with tests.
-- [ ] Receive feedback from at least one external reproduction.
+- [ ] Receive feedback from at least one external reproduction ([#9](https://github.com/cz-33-ai/physical-world-interface/issues/9)).
 - [ ] Fix unclear steps from that reproduction.
 
 **Distribution:** ask a few developers for honest reproduction feedback; avoid claiming a real physical-world demo.
@@ -38,7 +38,7 @@ flowchart LR
 ### Gate B — A physical actuator really responds
 
 - [ ] One actuator connected through the chosen device hub.
-- [ ] Video shows actual physical hardware and aligned state feedback.
+- [ ] Video shows actual physical hardware and aligned state feedback ([#10](https://github.com/cz-33-ai/physical-world-interface/issues/10)).
 - [ ] Reproducible hardware BOM, configuration, and limitations.
 - [ ] At least one documented failure/offline case.
 - [ ] Separate mock and real outputs visibly.
@@ -109,3 +109,12 @@ Do not fabricate metrics or imply GitHub Stars equal active adoption.
 - [#4 — Prepare for Sleep](https://github.com/cz-33-ai/physical-world-interface/issues/4)
 
 **Priority:** first real demonstrable physical outcome, then independent reproduction. Publishing posts is not a substitute for working hardware.
+
+
+## Public progress tracking
+
+- [#9 — Independent zero-hardware Quick Start reproduction](https://github.com/cz-33-ai/physical-world-interface/issues/9)
+- [#10 — Film the first verified physical PWI demo](https://github.com/cz-33-ai/physical-world-interface/issues/10)
+- [#11 — Validate the first teaching module with external learners](https://github.com/cz-33-ai/physical-world-interface/issues/11)
+
+**Current public evidence:** the Python simulator has six passing local unit tests and GitHub Actions configuration. No claims of independent reproductions, real actuator execution, hardware videos or course completion are made.
