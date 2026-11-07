@@ -1,123 +1,153 @@
 # Physical World Interface (PWI)
 
+### Perceive. Understand. Act. Verify.
+
+**An open-source, agent-ready interface to the physical world.**  
+PWI is designed to let Personal Agents understand what physical devices can do, observe current environmental state, request authorized actions, and verify what actually happened.
+
+**Home IoT is our first lab, not our final boundary.** The same ideas should extend to wearables, offices, vehicles and custom physical devices.
+
 > [!IMPORTANT]
-> ### 🎯 WHERE TO START: **[PWI MISSION CONTROL — Open your To-Do Dashboard](START_HERE.md)**
-> **Current stage:** M1 · Unified Device Hub  
-> **One task to do NOW:** **[#6 — Install Home Assistant & open the dashboard](https://github.com/cz-33-ai/physical-world-interface/issues/6)**  
-> [View all open issues](https://github.com/cz-33-ai/physical-world-interface/issues?q=is%3Aissue+is%3Aopen) · [View tasks assigned to me](https://github.com/cz-33-ai/physical-world-interface/issues?q=is%3Aissue+is%3Aopen+assignee%3A%40me)
+> **🎯 Building the project? Open [MISSION CONTROL →](START_HERE.md)**  
+> **NOW:** [#6 — Install Home Assistant and open its dashboard](https://github.com/cz-33-ai/physical-world-interface/issues/6).  
+> **NEXT:** [#7 — Connect MQTT + Zigbee2MQTT](https://github.com/cz-33-ai/physical-world-interface/issues/7) → [#8 — Verify sensor updates](https://github.com/cz-33-ai/physical-world-interface/issues/8).
 
-| ✅ DONE | 🔵 NOW | ⏭️ NEXT | 🔭 LATER |
+| **🚀 TRY IT** | **🎬 FLAGSHIP DEMO** | **🗺️ ROADMAP** | **🤝 CONTRIBUTE** |
 |:---:|:---:|:---:|:---:|
-| MQTT + Zigbee + ESP32 basic connectivity | [Install Home Assistant · #6](https://github.com/cz-33-ai/physical-world-interface/issues/6) | [Connect Zigbee2MQTT · #7](https://github.com/cz-33-ai/physical-world-interface/issues/7) | [Agent “Prepare for Sleep” · #4](https://github.com/cz-33-ai/physical-world-interface/issues/4) |
-
-**Can't remember what to do? Bookmark [START_HERE.md](START_HERE.md).** It is the curated home for the current task, next steps and full project milestones.
+| [5-minute Quick Start](QUICKSTART.md) | [Prepare for Sleep](docs/demos/prepare-for-sleep.md) | [Milestones & Issues](START_HERE.md) | [Start contributing](CONTRIBUTING.md) |
 
 ---
 
+## The one-minute idea
 
-**Perceive, understand, and act in the physical world — a unified physical capability layer for Personal Agents.**
+Imagine telling your Personal Agent:
 
-PWI is a subsystem of the larger **Personal Agent Platform**. Its mission is not merely to control smart-home devices: it aims to help an Agent **observe the physical environment, understand device state and capabilities, execute authorized multi-device actions, and receive verifiable feedback**.
+> **"I'm getting ready for bed."**
 
-The home IoT setup is our first experimental environment, **not the project's scope limit**. The architecture should eventually accommodate offices, wearables, vehicles, and custom embedded devices.
+An Agent should not need to know the Zigbee firmware of your light, the brand of your curtains, or which service controls your speaker. Instead, it should be able to discover a room's current state and **available capabilities**, then request meaningful physical outcomes:
 
-## The idea
+| Perceive | Understand | Act | Verify |
+|---|---|---|---|
+| Main light is on | Sleep environment should be dark | Turn off light | Read back reported state |
+| Curtains are open | Close for bedtime | Close curtains | Confirm reported position |
+| AC target is 25 °C | User prefers 22 °C | Set target to 22 °C | Confirm target setting; do not claim room instantly reaches 22 °C |
+| Music is playing | Stop playback | Stop speaker | Check player state |
 
-Imagine a user tells the Personal Agent: **“I'm getting ready for bed.”**
+**Crucial distinction:** *sending a command is not the same as confirming a physical outcome.*
 
-The Agent retrieves relevant preferences from its Personal Context Layer, checks the environment's available capabilities and current states through PWI, and forms a plan: turn off the light, close the curtains, adjust the air conditioner, and stop music if it is playing. PWI translates these **semantic operations** into actual device commands and reports verified results or uncertainty.
+The examples above describe the **target product experience**, not an already deployed four-device system.
 
-The Agent **owns intent and planning**. The overarching Personal Context Layer **owns personal memory and evolving facts**. PWI **owns the physical device interface and execution evidence**. Useful observations and outcomes can be handed to the platform's context ingestion pipeline without creating a second memory system inside PWI.
+## Architecture — where PWI fits
 
-## Architecture at a glance
-
-```text
-          Personal Agent + Personal Context Layer
-                        |
-                Intent-informed actions
-                        |
-                        v
-                  PWI Interface
-       Perception | Capabilities | Actions | Feedback
-                        |
-                        v
-                 Device Hub / Adapters
-                  Home Assistant (v1)
-                        |
-              +---------+----------+
-              |         |          |
-          Zigbee2MQTT  ESPHome   Other integrations
-              |         |          |
-           Sensors   ESP32 I/O   Lights / Covers / AC
-              |         |          |
-              +---------+----------+
-                        |
-                 State and event output
-                        |
-                        v
-              Platform Context Ingestion
+```mermaid
+flowchart TB
+    U["User intent"] --> A["Personal Agent<br/>understands goal and plans actions"]
+    C["Personal Context Layer<br/>preferences and task context"] --> A
+    A -->|"authorized semantic actions"| P["PWI<br/>perception · capabilities · execution · feedback"]
+    P -->|"observations and action evidence"| I["Personal Context ingestion"]
+    P <--> H["Home Assistant / integrations<br/>(initial device hub)"]
+    H <--> Z["Zigbee2MQTT · MQTT · ESPHome<br/>Matter / native integrations (future)"]
+    Z <--> D["Physical world<br/>sensors · lights · covers · climate · custom devices"]
+    classDef pwi fill:#dcecff,stroke:#3273bf,color:#173b65,stroke-width:2px
+    class P pwi
 ```
 
-See [PWI architecture v0.1](docs/architecture/pwi-overview.md) for responsibilities, boundaries, example flows, and proposed contracts. The approved high-level Personal Agent Platform architecture remains authoritative in its own repository; this diagram only expands the **Physical Devices** capability area.
+**Responsibility boundary:**
+- **Personal Agent:** user intent, planning and task-level reasoning.
+- **Personal Context Layer:** personal preferences, long-term memory and evolving user facts.
+- **PWI:** physical device identity/capabilities, state, authorized operation and execution evidence.
+- **Home Assistant and adapters:** first practical infrastructure for managing and accessing actual devices.
 
-## Leverage the existing ecosystem
+Read the [high- and middle-level architecture](docs/architecture/pwi-overview.md). PWI builds on, but does not replace, the approved Personal Agent Platform architecture.
 
-We want to **reuse proven infrastructure** rather than reimplement device protocols.
+## Try a working example today — no hardware required
 
-| Concern | Initial choice | Role |
+This repository includes a **real, runnable Python simulation** of the semantic action lifecycle. It is explicitly **not** an LLM Agent, Home Assistant integration or hardware controller.
+
+Requires Python 3.10+ and no third-party packages:
+
+```bash
+git clone https://github.com/cz-33-ai/physical-world-interface.git
+cd physical-world-interface
+
+# See the planned device operations (dry run; default)
+python3 examples/prepare_for_sleep_simulator.py
+
+# Apply to MOCK devices only and inspect mock state read-back
+python3 examples/prepare_for_sleep_simulator.py --apply
+
+# Simulate a disconnected curtain; report partial success
+python3 examples/prepare_for_sleep_simulator.py --apply --scenario offline
+
+# Verify the simulator
+python3 -m unittest discover -s tests -v
+```
+
+➡️ [**Step-by-step Quick Start and limitations**](QUICKSTART.md)
+
+**What is real already?** The existing lab validated local MQTT publish/subscribe, Zigbee2MQTT motion/illuminance telemetry, and ESP32-C3 Wi-Fi/MQTT communication. No Home Assistant deployment or multi-device physical actuation has been verified yet.
+
+## Our flagship open-source demo
+
+**Prepare for Sleep** is the first experience we want outside developers to reproduce:
+
+```mermaid
+flowchart LR
+    A["Intent"] --> B["Current state + capabilities"]
+    B --> C["Desired environment"]
+    C --> D["Authorized device actions"]
+    D --> E["Verified results"]
+    E --> F["Context events"]
+    classDef blue fill:#e0ecff,stroke:#517fc4,color:#244674
+    class B,C,E blue
+```
+
+| Step | Target | Status |
 |---|---|---|
-| Device hub and control | Home Assistant *(planned)* | Device model, availability, operations, scenes/scripts |
-| Zigbee connectivity | Zigbee2MQTT + coordinator | Zigbee device integration |
-| Message transport | Mosquitto / MQTT | Publish-subscribe telemetry and control |
-| Custom embedded nodes | ESP32-C3 + ESPHome | Edge sensing and actuation |
-| Agent connection | MCP and/or API *(to evaluate)* | Scoped capability discovery, query and actions |
-| Physical event output | Typed events *(to design)* | Observations and action feedback for upstream Context ingestion |
+| Demo 0 | A deterministic offline plan and simulated feedback | **Available** |
+| Demo 1 | One actual actuator, Home Assistant and verified state | Planned |
+| Demo 2 | Two or more devices coordinated toward one environmental goal | Planned |
+| Demo 3 | External Agent + personal preferences + physical-world context handoff | Planned |
 
-**Status:** The MQTT, ESP32-C3 and Zigbee motion-sensor baseline has been tested. Home Assistant integration, Agent orchestration, action feedback contracts, and end-to-end “prepare for sleep” remain future work. We do not claim that devices we have not connected are controlled.
+See the [**flagship demo storyboard, acceptance criteria and evidence plan**](docs/demos/prepare-for-sleep.md).
 
-## Project documents
+## Roadmap
 
-| Read | Purpose |
-|---|---|
-| [Architecture](docs/architecture/pwi-overview.md) | High-level vision, middle-level modules, boundaries, flows |
-| [Roadmap](docs/roadmap.md) | Milestones M0–M5, acceptance criteria and current baseline |
-| [GitHub workflow](docs/project-workflow.md) | Issue/PR conventions, source of truth and publication checks |
-| [Course plan](docs/course-plan.md) | Learning modules and future capstone |
-| [ADRs](docs/adr/README.md) | How major architecture choices will be recorded |
+| Stage | Outcome | Status |
+|---|---|---|
+| **M0 — Local connectivity** | Mosquitto, Zigbee telemetry, ESP32 communication | ✅ Baseline validated |
+| **M1 — Unified device hub** | Home Assistant sees existing sensors | 🔵 Active: [#6](https://github.com/cz-33-ai/physical-world-interface/issues/6) |
+| **M2 — Physical control** | One actuator with trustworthy feedback | Planned: [#3](https://github.com/cz-33-ai/physical-world-interface/issues/3) |
+| **M3 — Agent action** | Prepare for Sleep across connected capabilities | Planned: [#4](https://github.com/cz-33-ai/physical-world-interface/issues/4) |
+| **M4 — Context handoff** | Evidence-rich observation/action events for the platform | Planned: [#5](https://github.com/cz-33-ai/physical-world-interface/issues/5) |
+| **M5 — Operations** | Security, tests, recovery, portability | Planned |
 
-## Existing hands-on experiments
+[**Mission Control: What do I do next? →**](START_HERE.md) · [Detailed roadmap](docs/roadmap.md) · [All issues](https://github.com/cz-33-ai/physical-world-interface/issues)
 
-These are public, sanitized versions of experiments. Raw lab evidence is kept in a separate private notebook.
+## Learn by building
 
-1. [MQTT broker and local network](docs/01-mqtt-broker-and-lan-test.md)
-2. [ESP32-C3 + ESPHome + MQTT](docs/02-esp32c3-esphome-mqtt.md)
-3. [Zigbee2MQTT sensor observations](docs/03-zigbee2mqtt-sensor-observations.md)
-4. [Credential-free ESPHome example](config/esp32c3-mqtt.example.yaml)
+We want PWI to become a **developer education project**: a course where a learner gains both the electronics/software skills and the mindset to connect the physical world to Personal Agents.
 
-## Planned code organization
+| Get started | Build hardware | Integrate intelligence |
+|---|---|---|
+| Networking and MQTT | Zigbee and ESP32 | Device abstraction and Home Assistant |
+| [MQTT lab](docs/01-mqtt-broker-and-lan-test.md) | [ESP32 lab](docs/02-esp32c3-esphome-mqtt.md), [Zigbee lab](docs/03-zigbee2mqtt-sensor-observations.md) | Agent tools, state verification and context events (planned) |
 
-The current repository is documentation-first. **These directories describe the direction, not implemented software**:
+[Full course curriculum →](docs/course-plan.md)
 
-```text
-docs/            Architecture, roadmap, ADRs and verified tutorials
-config/          Sanitized reproducible configuration examples
-integrations/    Home Assistant and future device adapters (planned)
-packages/        Device/capability/action/event contracts (planned)
-examples/        Minimal integrations and end-to-end demonstrations (planned)
-tests/           Contract, hardware-in-the-loop and failure tests (planned)
-course/          Reproducible teaching modules (planned)
-```
+## Contribute and follow the build
 
-Build incrementally, beginning with Home Assistant and one controllable actuator. Do not add empty scaffolding before its first real implementation.
+- **New here?** Run the [offline simulator](QUICKSTART.md), then open an Issue if any step fails.
+- **Have IoT expertise?** Help design reliable device state/feedback handling or review [the first integration milestones](START_HERE.md).
+- **Have agent experience?** Contribute to capability schemas, authorization boundaries and event outputs.
+- **Want to teach?** Improve our [course plan](docs/course-plan.md) and convert verified experiments into reproducible lessons.
 
-## Guiding principles
+[Contribution guide](CONTRIBUTING.md) · [Open issues](https://github.com/cz-33-ai/physical-world-interface/issues?q=is%3Aissue+is%3Aopen) · [Community/release plan](docs/community/launch-plan.md)
 
-- **Perception + action:** a successful interface reports both sensed state and the observed result of commands.
-- **Semantic capabilities:** ask to `set_light_brightness`, not to manipulate a vendor-specific GPIO from the Agent.
-- **Separation of concerns:** Agent planning and long-term personal context stay outside PWI.
-- **Reuse and replaceability:** adopt mature integrations but avoid unnecessary lock-in.
-- **Local-first and least privilege:** physical control should work locally; agent permissions must be explicit.
-- **Evidence over assertions:** distinguish requested, dispatched, confirmed, failed and unverified action states.
-- **Privacy by default:** never publish real credentials, private addresses, device identifiers, household labels or unreviewed traces.
+## Trust, privacy and project status
 
-See the [project workflow](docs/project-workflow.md) before contributing or publishing experiments.
+This project is an early-stage reference implementation and learning environment, **not a production-ready autonomous controller**. Never publish real Wi-Fi passwords, IP assignments, SSIDs, hardware identifiers, Zigbee keys or raw household logs. Physical actions need scoped permissions and truthful outcome reporting.
+
+Public documentation and code live here; private raw experiments stay in a separate repository. Any mock device, AI step or future architecture is clearly labeled as such.
+
+**Build real things. Verify outcomes. Teach what works.**
