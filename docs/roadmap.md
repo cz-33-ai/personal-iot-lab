@@ -15,6 +15,7 @@
 - [x] Establish public documentation repository and private raw lab notebook.
 - [x] Define PWI vision, architectural boundaries, publication rules and roadmap.
 - [x] Adopt the canonical public repository slug `physical-world-interface`.
+- [x] Adopt [Apache License 2.0](../LICENSE) for public PWI code and documentation.
 - [x] Establish issue conventions, contribution guide, public issue forms and review checklist.
 - [ ] Create first architecture decision record (ADR) for Home Assistant integration.
 
