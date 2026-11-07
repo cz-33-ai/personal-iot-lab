@@ -1,0 +1,41 @@
+name: Feature or lesson proposal
+description: Propose a PWI capability, demonstration, integration, or educational improvement.
+title: "[Proposal] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        PWI is about observable, understandable, safely actionable physical capabilities. Proposals are welcome, but please do not share private network or household information.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Focus
+      options:
+        - Perception or device state
+        - Device capability abstraction
+        - Physical action or feedback
+        - Agent integration
+        - Context event handoff
+        - Education or documentation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Explain the user outcome, not just the tool you want to add.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested solution
+      description: Include reuse of existing ecosystems where appropriate.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: How could we verify success?
+    validations:
+      required: true
