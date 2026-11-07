@@ -7,6 +7,18 @@
 
 ---
 
+## 🚪 Two ways to enter PWI
+
+| **Project maintainer — what should I do?** | **New developer — can I try this?** |
+|---|---|
+| Follow the active task below: [#6 · Home Assistant](https://github.com/cz-33-ai/physical-world-interface/issues/6) | [5-minute zero-hardware Quick Start](QUICKSTART.md) |
+| [Review milestone roadmap](docs/roadmap.md) | [Explore the demo storyboard](docs/demos/prepare-for-sleep.md) |
+| [Open implementation issues](https://github.com/cz-33-ai/physical-world-interface/issues?q=is%3Aissue+is%3Aopen) | [How to contribute](CONTRIBUTING.md) |
+
+**Already available:** mock-device "Prepare for Sleep" simulation and six local tests. **Not yet built:** live physical action through Home Assistant or an external Agent.
+
+---
+
 ## 🎯 NOW — The single next action
 
 ### [#6 — M1.1: Install Home Assistant and open the dashboard](https://github.com/cz-33-ai/physical-world-interface/issues/6)
@@ -96,6 +108,7 @@ Avoid buying more equipment until the next milestone requires it.
 
 **Want to see only your active work?** [Open issues assigned to @me](https://github.com/cz-33-ai/physical-world-interface/issues?q=is%3Aissue+is%3Aopen+assignee%3A%40me).
 
+**Want the first demo?** [Try the offline Quick Start](QUICKSTART.md) · [Flagship real-device requirements](docs/demos/prepare-for-sleep.md).  
 **Need architectural context?** [PWI architecture](docs/architecture/pwi-overview.md).  
 **Need the broader plan?** [Roadmap](docs/roadmap.md).  
 **Need a practical experiment?** [MQTT](docs/01-mqtt-broker-and-lan-test.md) · [ESP32](docs/02-esp32c3-esphome-mqtt.md) · [Zigbee](docs/03-zigbee2mqtt-sensor-observations.md).
