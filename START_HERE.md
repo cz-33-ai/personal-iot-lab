@@ -84,6 +84,21 @@ Legend: ✅ tested baseline · 🔵 working milestone · ⚪ future work. Status
 
 ---
 
+## 🌱 COMMUNITY — The next influence-building tasks
+
+These are **not** replacements for the active engineering task. They are release-readiness gates for the public project.
+
+| Goal | Issue | Status |
+|---|---|---|
+| Get honest feedback from one independent simulator user | [#9 · External reproduction](https://github.com/cz-33-ai/physical-world-interface/issues/9) | Open |
+| Decide an explicit open-source license | [#12 · License selection](https://github.com/cz-33-ai/physical-world-interface/issues/12) | Open — owner decision |
+| Convert the first module into a teachable lesson | [#11 · Course validation](https://github.com/cz-33-ai/physical-world-interface/issues/11) | Open |
+| Record actual hardware footage **after a real device works** | [#10 · Physical demo video](https://github.com/cz-33-ai/physical-world-interface/issues/10) | Later |
+
+[Release gates and community strategy](docs/community/launch-plan.md) · [No-hardware Quick Start](QUICKSTART.md)
+
+---
+
 ## 🧰 What already works
 
 - ✅ Mosquitto MQTT broker and local publish/subscribe.
