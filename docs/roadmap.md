@@ -14,8 +14,8 @@
 
 - [x] Establish public documentation repository and private raw lab notebook.
 - [x] Define PWI vision, architectural boundaries, publication rules and roadmap.
-- [ ] Decide canonical repository slug and rename through GitHub settings if desired.
-- [ ] Establish issue conventions and review/checklist templates.
+- [x] Adopt the canonical public repository slug `physical-world-interface`.
+- [x] Establish issue conventions, contribution guide, public issue forms and review checklist.
 - [ ] Create first architecture decision record (ADR) for Home Assistant integration.
 
 **Exit:** every subsequent milestone has an issue, a measurable acceptance test and an owner.
@@ -77,8 +77,19 @@ For each task, keep: **Goal → Design → Implementation → Evidence → Accep
 
 | Work item | GitHub Issue |
 |---|---|
-| M1: Home Assistant + Mosquitto + Zigbee2MQTT | [#1](https://github.com/cz-33-ai/personal-iot-lab/issues/1) |
-| M1 research: ESPHome Native API vs MQTT | [#2](https://github.com/cz-33-ai/personal-iot-lab/issues/2) |
-| M2: First controllable actuator and feedback | [#3](https://github.com/cz-33-ai/personal-iot-lab/issues/3) |
-| M3: Prepare for Sleep | [#4](https://github.com/cz-33-ai/personal-iot-lab/issues/4) |
-| M4: Observation and action-outcome contracts | [#5](https://github.com/cz-33-ai/personal-iot-lab/issues/5) |
+| M1: Home Assistant + Mosquitto + Zigbee2MQTT | [#1](https://github.com/cz-33-ai/physical-world-interface/issues/1) |
+| M1 research: ESPHome Native API vs MQTT | [#2](https://github.com/cz-33-ai/physical-world-interface/issues/2) |
+| M2: First controllable actuator and feedback | [#3](https://github.com/cz-33-ai/physical-world-interface/issues/3) |
+| M3: Prepare for Sleep | [#4](https://github.com/cz-33-ai/physical-world-interface/issues/4) |
+| M4: Observation and action-outcome contracts | [#5](https://github.com/cz-33-ai/physical-world-interface/issues/5) |
+
+
+## Reproducibility and community
+
+- [x] Publish an offline, dependency-free simulated demonstration and tests.
+- [x] Link a developer [Quick Start](../QUICKSTART.md) from the README.
+- [ ] Confirm at least one **independent external reproduction** with feedback.
+- [ ] Replace simulator-only claims with a genuine connected-hardware demo after M2.
+- [ ] Publish a short, accurate demo video and accompanying instructions once verified.
+
+See [community release gates](community/launch-plan.md) and the [flagship demo plan](demos/prepare-for-sleep.md).
