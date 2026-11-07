@@ -2,7 +2,7 @@
 
 ### Perceive. Understand. Act. Verify.
 
-**An open-source, agent-ready interface to the physical world.**  
+**A public, agent-ready reference project for the physical world.**  
 PWI is designed to let Personal Agents understand what physical devices can do, observe current environmental state, request authorized actions, and verify what actually happened.
 
 **Home IoT is our first lab, not our final boundary.** The same ideas should extend to wearables, offices, vehicles and custom physical devices.
@@ -87,7 +87,7 @@ python3 -m unittest discover -s tests -v
 
 **What is real already?** The existing lab validated local MQTT publish/subscribe, Zigbee2MQTT motion/illuminance telemetry, and ESP32-C3 Wi-Fi/MQTT communication. No Home Assistant deployment or multi-device physical actuation has been verified yet.
 
-## Our flagship open-source demo
+## Our flagship reference demo
 
 **Prepare for Sleep** is the first experience we want outside developers to reproduce:
 
@@ -149,5 +149,7 @@ We want PWI to become a **developer education project**: a course where a learne
 This project is an early-stage reference implementation and learning environment, **not a production-ready autonomous controller**. Never publish real Wi-Fi passwords, IP assignments, SSIDs, hardware identifiers, Zigbee keys or raw household logs. Physical actions need scoped permissions and truthful outcome reporting.
 
 Public documentation and code live here; private raw experiments stay in a separate repository. Any mock device, AI step or future architecture is clearly labeled as such.
+
+**Licensing:** a formal open-source license has **not yet been selected** ([decision issue #12](https://github.com/cz-33-ai/physical-world-interface/issues/12)). Public visibility does not, by itself, authorize unrestricted reuse.
 
 **Build real things. Verify outcomes. Teach what works.**
