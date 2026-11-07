@@ -2,7 +2,7 @@
 
 ### Perceive. Understand. Act. Verify.
 
-**A public, agent-ready reference project for the physical world.**  
+**An Apache-2.0-licensed, agent-ready reference project for the physical world.**  
 PWI is designed to let Personal Agents understand what physical devices can do, observe current environmental state, request authorized actions, and verify what actually happened.
 
 **Home IoT is our first lab, not our final boundary.** The same ideas should extend to wearables, offices, vehicles and custom physical devices.
@@ -150,6 +150,6 @@ This project is an early-stage reference implementation and learning environment
 
 Public documentation and code live here; private raw experiments stay in a separate repository. Any mock device, AI step or future architecture is clearly labeled as such.
 
-**Licensing:** a formal open-source license has **not yet been selected** ([decision issue #12](https://github.com/cz-33-ai/physical-world-interface/issues/12)). Public visibility does not, by itself, authorize unrestricted reuse.
+**License:** [Apache License 2.0](LICENSE) — commercial use, modification, and redistribution are permitted under its terms. Preserve required notices and mark modified files where applicable. See [the license decision (#12)](https://github.com/cz-33-ai/physical-world-interface/issues/12).
 
 **Build real things. Verify outcomes. Teach what works.**
