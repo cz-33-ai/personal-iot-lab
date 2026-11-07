@@ -1,0 +1,53 @@
+name: Reproducibility report
+description: Help improve the tutorial or offline demo by reporting what you actually tested.
+title: "[Reproduction] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing PWI. This is a **public issue**. Never post Wi-Fi passwords, local/private IPs, SSIDs, MAC or IEEE addresses, household details, tokens or identifying raw logs.
+  - type: dropdown
+    id: path
+    attributes:
+      label: What were you trying?
+      options:
+        - Offline Prepare for Sleep simulator
+        - MQTT broker lab
+        - ESPHome / ESP32-C3 lab
+        - Zigbee2MQTT sensor lab
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment (sanitized)
+      placeholder: "Example: macOS, Python 3.11, no hardware"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide non-sensitive commands or steps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected outcome
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual outcome / error (redacted)
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public privacy review
+      options:
+        - label: I removed credentials, household identifiers, private IP addresses and other personal data from this report.
+          required: true
